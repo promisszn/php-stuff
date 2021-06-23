@@ -1,10 +1,3 @@
-<?php
-echo 'yes';
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +7,12 @@ echo 'yes';
     <title>Document</title>
 </head>
 <body>
+
+<?php
+echo 'yes';
+
+?>
+
     
 </body>
 </html>
