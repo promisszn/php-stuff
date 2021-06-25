@@ -9,8 +9,35 @@
 <body>
 
 <?php
-echo 'yes';
+// Range Function
+function ranging(int $start = 0, int $end = 1) {
+    $result = [];
 
+    while($start <= $end) { 
+       array_push($result, $start); 
+       $start++;
+    }
+
+    return $result;
+}
+
+ print_r(ranging(5, 15));
+
+ echo '<br><br>';
+
+ //Sum Function
+function sum($numArray) {
+    $total = 0;
+    $numArrayLength = count($numArray);
+
+    for ($i=0; $i < $numArrayLength; $i++) { 
+        $total += $numArray[$i];
+    }
+
+    return $total;
+}
+
+print_r(sum(ranging(5,15)));
 ?>
 
     
