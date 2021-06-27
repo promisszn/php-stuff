@@ -21,10 +21,6 @@ function ranging(int $start = 0, int $end = 1) {
     return $result;
 }
 
- print_r(ranging(5, 15));
-
- echo '<br><br>';
-
  //Sum Function
 function sum($numArray) {
     $total = 0;
@@ -36,7 +32,11 @@ function sum($numArray) {
 
     return $total;
 }
-
+//calling range function    
+print_r(ranging(5, 15));
+    
+echo '<br><br>';
+//calling sum function    
 print_r(sum(ranging(5,15)));
 ?>
 
