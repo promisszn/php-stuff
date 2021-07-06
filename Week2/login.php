@@ -43,7 +43,7 @@
   
           
           
-          if (count($_COOKIE) != 0) {
+          if (isset($_COOKIE['usern'])) {
               $UserN = $_COOKIE['usern'];
               $UserE = $_COOKIE['usere'];
               $UserUn = $_COOKIE['userun'];
