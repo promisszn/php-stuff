@@ -1,6 +1,6 @@
 <?php
   $name = $email = $username = $password = '';
-  $nameErr = $emailErr = $usernameErr = $passwordErr = '';
+  $nameErr = $emailErr = $usernameErr = $passwordErr = $err2 = '';
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST['name'])) {
@@ -60,12 +60,26 @@
       $_SESSION['username'] = $_POST['username'];
       $_SESSION['password'] = $_POST['password'];
 
-      setcookie('usern', $_POST['name'], strtotime('1 day'), '/');
-      setcookie('usere', $_POST['email'], strtotime('1 day'), '/');
-      setcookie('userun', $_POST['username'], strtotime('1 day'), '/');
-      setcookie('userp', $_POST['password'], strtotime('1 day'), '/');
+      
 
-      header('location: home.php');
+      if (isset($_COOKIE['usern'])) {
+        $UserN = $_COOKIE['usern'];
+        $UserE = $_COOKIE['usere'];
+        $UserUn = $_COOKIE['userun'];
+        $UserP = $_COOKIE['userp'];
+        if($UserE == $_POST['email'] || $UserUn == $_POST['username']){
+          $err2 = 'Email or Username is already Taken';
+        }else {
+          setcookie('usern', $_POST['name'], strtotime('1 day'), '/');
+          setcookie('usere', $_POST['email'], strtotime('1 day'), '/');
+          setcookie('userun', $_POST['username'], strtotime('1 day'), '/');
+          setcookie('userp', $_POST['password'], strtotime('1 day'), '/');
+
+          header('location: home.php');
+        }
+      }
+
+     
     }
   }
 
@@ -84,6 +98,7 @@
 <section class="container grey-text">
     <h4 class="center">Create Account</h4>
     <p><span class="error">* required field</span></p>
+    <p><span class="error"><?php echo $err2 ?></span></p>
     <form class="white" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
       <label>Your Name:</label>
       <span class="error">* <?php echo $nameErr ?></span>

@@ -50,7 +50,7 @@
               $UserP = $_COOKIE['userp'];
             if($UserUn === $_POST['username'] && $UserP === $_POST['password']) {
               header('location: home.php');
-            } else if (empty($_COOKIE) || $UserUn !== $_POST['username']) {
+            } else if (empty($_COOKIE) || $UserUn !== $_POST['username'] || $UserP !== $_POST['password']) {
               $err2 = 'Invalid Username or Password. Signup to create account';
             }
           } else {
